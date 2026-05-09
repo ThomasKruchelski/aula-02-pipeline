@@ -1,16 +1,19 @@
-function jurosCompostos(capitalInit, taxa, tempo){
-    const montante = capitalInit*Math.pow(1+taxa / 100, tempo)
-    
+function jurosCompostos(capitalInit, taxa, tempo) {
+    const montante = capitalInit * Math.pow(1 + taxa / 100, tempo);
     return montante.toFixed(0)
 }
 
-function mostrarInvestimento(capitalInit, taxa, tempo){
-
-    const valorObtido = jurosCompostos(capitalInit, taxa, tempo) - capitalInit
-
-    const resposta = "Em " + tempo + " meses, com o valor inicial de R$" + capitalInit + " você lucrou: R$" + valorObtido
-
-    return resposta
+function lucroInvestimento(capitalInit, taxa, tempo) {
+    return jurosCompostos(capitalInit, taxa, tempo) - capitalInit;
 }
 
-module.exports = mostrarInvestimento;
+function mostrarInvestimento(capitalInit, taxa, tempo) {
+    const lucro = lucroInvestimento(capitalInit, taxa, tempo);
+    return lucro.toFixed(0);
+}
+
+module.exports = {
+    jurosCompostos,
+    mostrarInvestimento,
+    lucroInvestimento
+};
