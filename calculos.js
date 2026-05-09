@@ -4,4 +4,13 @@ function jurosCompostos(capitalInit, taxa, tempo){
     return montante.toFixed(0)
 }
 
-module.exports = jurosCompostos;
+function mostrarInvestimento(capitalInit, taxa, tempo){
+
+    const valorObtido = jurosCompostos(capitalInit, taxa, tempo) - capitalInit
+
+    const resposta = "Em " + tempo + " meses, com o valor inicial de R$" + capitalInit + " você lucrou: R$" + valorObtido
+
+    return resposta
+}
+
+module.exports = mostrarInvestimento;
