@@ -1,0 +1,25 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubunto-latest
+
+    steps:
+      - name: Clone respositório
+        uses: actions/checkout@v4
+      
+      - name: Instalar Node
+        uses: actions/setup-node@v4
+        with: 
+          node-version: '20'
+        
+      - name: instalar dependencias
+        run: npm install
+
+      - name: Rodar testes
+        run: npm test
